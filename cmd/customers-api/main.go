@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/abhinavkumar03/customer-management-api/internal/config"
+	"github.com/abhinavkumar03/customer-management-api/internal/http/handlers/customer"
 )
 
 func main() {
@@ -21,9 +22,7 @@ func main() {
 
 	// setup router
 	router := http.NewServeMux()
-	router.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("welcome to students api"))
-	})
+	router.HandleFunc("POST /api/customers", customer.New())
 
 	// setup server
 	server := http.Server{
